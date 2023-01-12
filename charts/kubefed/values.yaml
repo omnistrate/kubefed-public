@@ -48,13 +48,13 @@ controllermanager:
   controller:
     annotations: {}
     podAnnotations: {}
-    replicaCount: 2
+    replicaCount: 1
     repository: quay.io/kubernetes-multicluster
     image: kubefed
     tag: canary
     imagePullPolicy: IfNotPresent
-    logLevel: 2
-    forceRedeployment: false
+    logLevel: 4
+    forceRedeployment: true
     env: {}
     resources:
       limits:
