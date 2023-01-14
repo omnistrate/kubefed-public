@@ -16,8 +16,8 @@ controllermanager:
   clusterHealthCheckFailureThreshold:
   clusterHealthCheckSuccessThreshold:
   clusterHealthCheckTimeout:
-  ## Supported options are `configmaps` and `endpoints`
-  leaderElectResourceLock:
+  ## Supported options are `configmapsleases` and `endpointsleases`
+  leaderElectResourceLock: configmapsleases
   syncController:
     maxConcurrentReconciles:
     adoptResources:
@@ -49,9 +49,9 @@ controllermanager:
     annotations: {}
     podAnnotations: {}
     replicaCount: 1
-    repository: quay.io/kubernetes-multicluster
+    repository: omnistrate
     image: kubefed
-    tag: canary
+    tag: latest
     imagePullPolicy: IfNotPresent
     logLevel: 4
     forceRedeployment: true
@@ -66,9 +66,9 @@ controllermanager:
   webhook:
     annotations: {}
     replicaCount: 1
-    repository: quay.io/kubernetes-multicluster
+    repository: omnistrate
     image: kubefed
-    tag: canary
+    tag: latest
     imagePullPolicy: IfNotPresent
     logLevel: 8
     forceRedeployment: false
