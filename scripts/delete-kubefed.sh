@@ -41,7 +41,7 @@ NAMESPACED="${NAMESPACED:-}"
 DELETE_CLUSTER_RESOURCE="${DELETE_CLUSTER_RESOURCE:-}"
 
 IMAGE_NAME=`kubectl get deploy -n ${NS} -oyaml | grep "image:" | awk '{print $2}'`
-LATEST_IMAGE_NAME=quay.io/kubernetes-multicluster/kubefed:latest
+LATEST_IMAGE_NAME=docker.io/omnistrate/kubefed:latest
 if [[ "${IMAGE_NAME}" == "$LATEST_IMAGE_NAME" ]]; then
   USE_LATEST=y
 else

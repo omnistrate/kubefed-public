@@ -77,8 +77,8 @@ function run-e2e-upgrade-test() {
   echo "Installing an older kubefed version v${KUBEFED_UPGRADE_TEST_VERSION}"
   helm install kubefed kubefed-charts/kubefed --namespace ${KUBEFED_UPGRADE_TEST_NS} --version=v${KUBEFED_UPGRADE_TEST_VERSION} --create-namespace --wait
 
-  deployment-image-as-expected "${KUBEFED_UPGRADE_TEST_NS}" kubefed-admission-webhook admission-webhook "quay.io/kubernetes-multicluster/kubefed:v${KUBEFED_UPGRADE_TEST_VERSION}"
-  deployment-image-as-expected "${KUBEFED_UPGRADE_TEST_NS}" kubefed-controller-manager controller-manager "quay.io/kubernetes-multicluster/kubefed:v${KUBEFED_UPGRADE_TEST_VERSION}"
+  deployment-image-as-expected "${KUBEFED_UPGRADE_TEST_NS}" kubefed-admission-webhook admission-webhook "docker.io/omnistrate/kubefed:v${KUBEFED_UPGRADE_TEST_VERSION}"
+  deployment-image-as-expected "${KUBEFED_UPGRADE_TEST_NS}" kubefed-controller-manager controller-manager "docker.io/omnistrate/kubefed:v${KUBEFED_UPGRADE_TEST_VERSION}"
 
   echo "Upgrading kubefed to current version"
   IMAGE_NAME="local/kubefed:e2e"

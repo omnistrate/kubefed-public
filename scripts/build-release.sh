@@ -29,8 +29,8 @@ RELEASE_TAG="${1-}"
 
 # Globals
 QUAY_REPO="${QUAY_REPO:-kubernetes-multicluster/kubefed}"
-GITHUB_REPO="${GITHUB_REPO:-kubernetes-sigs/kubefed}"
-GITHUB_REMOTE_UPSTREAM_NAME="${GITHUB_REMOTE_UPSTREAM_NAME:-upstream}"
+GITHUB_REPO="${GITHUB_REPO:-omnistrate/kubefed-public}"
+GITHUB_REMOTE_UPSTREAM_NAME="origin"
 
 function verify-command-installed() {
   if ! util::command-installed gh; then
@@ -56,7 +56,7 @@ function create-and-push-tag() {
 
   # This creates an annotated tag required to ensure that the KubeFed binaries
   # are versioned correctly.
-  git tag -s -a "${RELEASE_TAG}" "${GITHUB_REMOTE_UPSTREAM_NAME}/master" -m "Creating release tag ${RELEASE_TAG}"
+  git tag -a "${RELEASE_TAG}" "${GITHUB_REMOTE_UPSTREAM_NAME}/master" -m "Creating release tag ${RELEASE_TAG}"
   git push "${GITHUB_REMOTE_UPSTREAM_NAME}" "${RELEASE_TAG}"
 }
 
@@ -98,14 +98,14 @@ function verify-continuous-integration() {
   fi
 }
 
-function quay-image-status() {
-  local quayImagesAPIURL="https://quay.io/api/v1/repository/${QUAY_REPO}/tag/${RELEASE_TAG}/images"
-  curl -fsSL "${quayImagesAPIURL}" &> /dev/null
-}
-
-function verify-container-image() {
-  util::wait-for-condition "kubefed container image in quay" "quay-image-status" 60
-}
+#function quay-image-status() {
+#  local quayImagesAPIURL="https://docker.io/api/v1/repository/${QUAY_REPO}/tag/${RELEASE_TAG}/images"
+#  curl -fsSL "${quayImagesAPIURL}" &> /dev/null
+#}
+#
+#function verify-container-image() {
+#  util::wait-for-condition "kubefed container image in quay" "quay-image-status" 60
+#}
 
 function update-changelog() {
   printf "%s\n\n%s\n" \
@@ -132,8 +132,8 @@ create-and-push-tag
 util::log "Verifying image builds and completes successfully in Github Actions. This can take a while (~1 hour)"
 verify-continuous-integration
 
-util::log "Verifying container image tags and pushes successfully to Quay"
-verify-container-image
+#util::log "Verifying container image tags and pushes successfully to Quay"
+#verify-container-image
 
 util::log "Updating CHANGELOG.md"
 update-changelog
