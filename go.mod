@@ -1,6 +1,6 @@
 module sigs.k8s.io/kubefed
 
-go 1.16
+go 1.19
 
 require (
 	github.com/evanphx/json-patch v4.12.0+incompatible
