@@ -1,3 +1,7 @@
+# v0.10.1
+
+**Full Changelog**: https://github.com/omnistrate/kubefed-public/compare/v0.10.0...v0.10.1
+
 # v0.10.0
 
 ## BREAKING CHANGE
