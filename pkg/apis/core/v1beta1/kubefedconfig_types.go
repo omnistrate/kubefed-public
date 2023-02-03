@@ -19,6 +19,7 @@ package v1beta1
 import (
 	apiextv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/tools/leaderelection/resourcelock"
 )
 
 // KubeFedConfigSpec defines the desired state of KubeFedConfig
@@ -70,7 +71,7 @@ type LeaderElectConfig struct {
 	// +optional
 	RetryPeriod *metav1.Duration `json:"retryPeriod,omitempty"`
 	// The type of resource object that is used for locking during
-	// leader election. Supported options are `configmaps` (default) and `endpoints`.
+	// leader election. Supported options are `configmapsleases` (default) and `endpointsleases`.
 	// +optional
 	ResourceLock *ResourceLockType `json:"resourceLock,omitempty"`
 }
@@ -78,8 +79,8 @@ type LeaderElectConfig struct {
 type ResourceLockType string
 
 const (
-	ConfigMapsResourceLock ResourceLockType = "configmaps"
-	EndpointsResourceLock  ResourceLockType = "endpoints"
+	ConfigMapsResourceLock ResourceLockType = resourcelock.ConfigMapsLeasesResourceLock
+	EndpointsResourceLock  ResourceLockType = resourcelock.EndpointsLeasesResourceLock
 )
 
 type FeatureGatesConfig struct {

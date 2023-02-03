@@ -267,6 +267,7 @@ func (c *Controller) reconcile(qualifiedName util.QualifiedName) util.Reconcilia
 	err = c.client.UpdateStatus(context.TODO(), typeConfig)
 	if err != nil {
 		runtime.HandleError(errors.Wrapf(err, "Could not update status fields of the CRD: %q", key))
+		klog.V(2).ErrorS(err, "Could not update status fields of the CRD", "CRD", key)
 		return util.StatusError
 	}
 	return util.StatusAllOK
