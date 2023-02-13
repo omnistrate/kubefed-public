@@ -1,3 +1,13 @@
+# v0.10.2
+
+## What's Changed
+* Update repo for release v0.10.1 by @aloknnikhil in https://github.com/omnistrate/kubefed-public/pull/1
+
+## New Contributors
+* @aloknnikhil made their first contribution in https://github.com/omnistrate/kubefed-public/pull/1
+
+**Full Changelog**: https://github.com/omnistrate/kubefed-public/compare/v0.10.1...v0.10.2
+
 # v0.10.1
 
 **Full Changelog**: https://github.com/omnistrate/kubefed-public/compare/v0.10.0...v0.10.1
