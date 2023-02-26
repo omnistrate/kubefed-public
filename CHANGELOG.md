@@ -1,3 +1,11 @@
+# v0.10.4
+
+## What's Changed
+* Update repo for release v0.10.3 by @aloknnikhil in https://github.com/omnistrate/kubefed-public/pull/3
+
+
+**Full Changelog**: https://github.com/omnistrate/kubefed-public/compare/v0.10.3...v0.10.4
+
 # v0.10.3
 
 ## What's Changed
