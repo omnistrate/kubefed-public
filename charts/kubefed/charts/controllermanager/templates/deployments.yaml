@@ -121,7 +121,6 @@ spec:
         - "/hyperfed/webhook"
         - "--secure-port=8443"
         - "--cert-dir=/var/serving-cert/"
-        - "--v={{ .Values.webhook.logLevel }}"
         ports:
         - containerPort: 8443
         volumeMounts:
